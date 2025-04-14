@@ -46,8 +46,9 @@ class RedditScraper(BaseScraper):
         reddit_df = self.build_df(data=data, columns=reddit_columns)
         
         self.write_output(reddit_df)
-
-    def convert_to_iso_format(self, created_utc):
+        
+    @staticmethod
+    def convert_to_iso_format(created_utc):
         """Converts the created_utc timestamp to '%Y-%m-%d %H:%M:%S%z' format"""
         created_time = datetime.datetime.fromtimestamp(
             created_utc, tz=datetime.timezone.utc
